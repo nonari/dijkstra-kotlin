@@ -1,4 +1,4 @@
-group 'com.nonari.aiseo.application'
+group 'org.nonari.aiseo.application'
 version '1.0'
 
 buildscript {
