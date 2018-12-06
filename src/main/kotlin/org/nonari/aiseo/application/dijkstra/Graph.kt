@@ -2,7 +2,9 @@ package org.nonari.aiseo.application.dijkstra
 
 import java.util.HashMap
 
+
 class Graph(val maxNodes: Int) {
+
     private val adjacencyMap = HashMap<Int, MutableMap<Int, Int>>()
 
     fun addEdge(edge: Edge) {
@@ -26,8 +28,8 @@ class Graph(val maxNodes: Int) {
             adjacencyMap[src]?.put(dst, weight)
         } else {
             val map = HashMap<Int, Int>()
-            map.put(dst, weight)
-            adjacencyMap.put(src, map)
+            map[dst] = weight
+            adjacencyMap[src] = map
         }
     }
 
@@ -36,9 +38,9 @@ class Graph(val maxNodes: Int) {
     }
 
     fun nodeNeighbours(node: Int): Set<Edge>? {
-        return adjacencyMap[node]?.entries?.mapTo(mutableSetOf<Edge>(), {
-            Edge(node, it.key, it.value)
-        })
+        return adjacencyMap[node]?.entries?.mapTo(mutableSetOf()) {
+            it -> Edge(node, it.key, it.value)
+        }
     }
 
     fun nodes(): Set<Int> {
@@ -50,4 +52,3 @@ class Graph(val maxNodes: Int) {
     }
 
 }
-

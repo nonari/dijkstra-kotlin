@@ -26,26 +26,21 @@ class GraphTest {
 
     @Test
     fun failsWhenAddingNodeNumbersOutOfBounds() {
-        Assertions.assertThrows(
-                IllegalArgumentException::class.java,
-                {graph.addEdge(maxNodes + 1, 1, 3)}
-        )
-        Assertions.assertThrows(
-                IllegalArgumentException::class.java,
-                {graph.addEdge(maxNodes, 0, 3)}
-        )
-        Assertions.assertThrows(
-                IllegalArgumentException::class.java,
-                {graph.addEdge(1, maxNodes + 1, 3)}
-        )
-        Assertions.assertThrows(
-                IllegalArgumentException::class.java,
-                {graph.addEdge(0, maxNodes, 3)}
-        )
-        Assertions.assertThrows(
-                IllegalArgumentException::class.java,
-                {graph.addEdge(1, maxNodes, -1)}
-        )
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            graph.addEdge(maxNodes + 1, 1, 3)
+        }
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            graph.addEdge(maxNodes, 0, 3)
+        }
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            graph.addEdge(1, maxNodes + 1, 3)
+        }
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            graph.addEdge(0, maxNodes, 3)
+        }
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            graph.addEdge(1, maxNodes, -1)
+        }
     }
 
     @Test
@@ -62,13 +57,13 @@ class GraphTest {
 
     @Test
     fun nodeNeighboursFor2() {
-        val expectedEdges = setOf<Edge>(edge2to1, edge2to3, edge2to4, edge2to5)
+        val expectedEdges = setOf(edge2to1, edge2to3, edge2to4, edge2to5)
         Assertions.assertEquals(expectedEdges, graph.nodeNeighbours(2))
     }
 
     @Test
     fun nodeNeighboursFor1() {
-        val expectedEdges = setOf<Edge>(edge2to1)
+        val expectedEdges = setOf(edge2to1)
         Assertions.assertEquals(expectedEdges, graph.nodeNeighbours(1))
     }
 

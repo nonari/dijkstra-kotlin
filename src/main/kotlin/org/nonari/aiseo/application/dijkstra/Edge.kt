@@ -1,5 +1,6 @@
 package org.nonari.aiseo.application.dijkstra
 
+
 class Edge(val src: Int, val dst: Int, val len: Int) {
 
     override fun equals(other: Any?): Boolean {
